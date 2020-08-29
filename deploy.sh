@@ -1,5 +1,7 @@
 #!/usr/bin/sh 
 
+git rm --cached ./tags
+
 # generate tags 
 python3 .generator_tags.py
 
