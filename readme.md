@@ -106,6 +106,19 @@ version: v1.10
 ![tag:language:java](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.10/tags/language/java/java_blue.png)
 ```![tag:language:java](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.10/tags/language/java/java_blue.png)```
 
+### javascript
+![tag:language:javascript](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.10/tags/language/javascript/javascript_white.png)
+```![tag:language:javascript](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.10/tags/language/javascript/javascript_white.png)```
+
+![tag:language:javascript](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.10/tags/language/javascript/javascript_red.png)
+```![tag:language:javascript](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.10/tags/language/javascript/javascript_red.png)```
+
+![tag:language:javascript](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.10/tags/language/javascript/javascript_green.png)
+```![tag:language:javascript](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.10/tags/language/javascript/javascript_green.png)```
+
+![tag:language:javascript](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.10/tags/language/javascript/javascript_blue.png)
+```![tag:language:javascript](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.10/tags/language/javascript/javascript_blue.png)```
+
 ## status
 ### status:development
 ![tag:status:status:development](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.10/tags/status/status_development/status_development_white.png)
