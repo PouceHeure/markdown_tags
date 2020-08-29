@@ -86,7 +86,7 @@ if __name__ == "__main__":
     md_file.add_title("markdown_tags")
     md_file.add_element(f"version: {github_branch}")
 
-    headers = ["img","url"]
+    headers = ["img","markdown command"]
 
     config_tags = load_config_tags()
     for cat, cat_tags in config_tags.items():
