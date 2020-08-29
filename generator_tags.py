@@ -3,18 +3,20 @@ import os
 from lib.md import MardownFile
 from PIL import Image,ImageDraw,ImageFont, ImageOps
 
-FONT_SIZE = 15
-PADDING_SIZE = 10
-BORDER_SIZE = 2
-
 GITHUB_USER = "PouceHeure"
 GITHUB_REPO = "markdown_tags"
 GITHUB_BRANCH = "master"
+
+## DON'T CHANGE THESE SETTINGS 
 
 PATH_DIR_CURRENT = os.path.dirname(os.path.realpath(__file__))
 PATH_DIR_TAGS = os.path.join(PATH_DIR_CURRENT,"tags/")
 PATH_FILE_FONT = os.path.join(PATH_DIR_CURRENT,"font/RussoOne-Regular.ttf")
 PATH_FILE_CONFIG_TAGS = os.path.join(PATH_DIR_CURRENT,"config_tags.json")
+
+FONT_SIZE = 15
+PADDING_SIZE = 10
+BORDER_SIZE = 2
 
 CONFLICT_CHARS = {
     "#":"sharp",
@@ -50,12 +52,11 @@ def create_path_base_link(user,repo,branch):
 
 
 if __name__ == "__main__":
+    path_url_base = create_path_base_link(GITHUB_USER,GITHUB_REPO,GITHUB_BRANCH)
+    font = ImageFont.truetype(PATH_FILE_FONT,FONT_SIZE)
+
     md_file = MardownFile()
     md_file.add_title("markdown_tags")
-
-    path_url_base = create_path_base_link(GITHUB_USER,GITHUB_REPO,GITHUB_BRANCH)
-
-    font = ImageFont.truetype(PATH_FILE_FONT,FONT_SIZE)
 
     config_tags = load_config_tags()
     for cat, cat_tags in config_tags.items():
@@ -64,17 +65,22 @@ if __name__ == "__main__":
             os.makedirs(path_cat)
         md_file.add_section(cat) 
         for tag in cat_tags: 
+            # generate img 
             img = generate_image(tag,font=font)
             file_name = f"{fix_conflict_name(tag)}.png"
             file_path = os.path.join(path_cat,file_name)
             img.save(file_path)
 
-            file_path_rel = os.path.relpath(file_path,PATH_DIR_CURRENT)
-            file_url = os.path.join(path_url_base,file_path_rel)
+            # generate doc information 
+            # extract relative path 
+            file_path_rel = os.path.relpath(file_path,PATH_DIR_CURRENT) 
+            # add relative path to url 
+            file_url = os.path.join(path_url_base,file_path_rel) 
+            # write tag information inside markdown 
             md_file.add_subsection(tag)
-            img_md = md_file.add_image(tag,file_url)
+            tag_img_md_format = md_file.add_image(tag,file_url)
             md_file.add_element("")
-            md_file.add_element_quote(img_md)
+            md_file.add_element_quote(tag_img_md_format)
 
     md_file.write(os.path.join(PATH_DIR_CURRENT,"readme.md"))
 

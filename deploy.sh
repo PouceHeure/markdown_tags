@@ -1,7 +1,7 @@
 #!/usr/bin/sh 
 
 # generate tags 
-python3 .generator_tags.py
+python3 generator_tags.py
 
 git add readme.md  
 git add config_tags.json
