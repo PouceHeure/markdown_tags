@@ -2,7 +2,7 @@ import json
 import os 
 from PIL import Image,ImageDraw,ImageFont, ImageOps
 
-FONT_SIZE = 100
+FONT_SIZE = 20
 PADDING_SIZE = 10
 BORDER_SIZE = 2
 FONT = ImageFont.truetype("./font/RussoOne-Regular.ttf",FONT_SIZE)
