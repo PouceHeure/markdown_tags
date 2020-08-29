@@ -12,7 +12,7 @@ GITHUB_BRANCH = "master"
 PATH_DIR_CURRENT = os.path.dirname(os.path.realpath(__file__))
 PATH_DIR_TAGS = os.path.join(PATH_DIR_CURRENT,"tags/")
 PATH_FILE_FONT = os.path.join(PATH_DIR_CURRENT,"font/RussoOne-Regular.ttf")
-PATH_FILE_CONFIG_TAGS = os.path.join(PATH_DIR_CURRENT,"config_tags.json")
+PATH_FILE_CONFIG_TAGS = os.path.join(PATH_DIR_CURRENT,"tags.json")
 
 FONT_SIZE = 15
 PADDING_SIZE = 10
