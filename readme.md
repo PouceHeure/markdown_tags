@@ -1,4 +1,5 @@
 # markdown_tags
+version: v1.0
 ## category
 ### machine-learning
 ![tag:category:machine-learning](https://raw.githubusercontent.com/PouceHeure/markdown_tags/v1.0/tags/category/machine-learning/machine-learning_white.png)
