@@ -51,6 +51,10 @@
 ![tag:lib:tensorflow](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/lib/tensorflow.png)
 
 ```![tag:lib:tensorflow](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/lib/tensorflow.png)```
+### pygame
+![tag:lib:pygame](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/lib/pygame.png)
+
+```![tag:lib:pygame](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/lib/pygame.png)```
 ## version
 ### v1
 ![tag:version:v1](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/version/v1.png)
