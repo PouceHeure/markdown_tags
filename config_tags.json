@@ -1,14 +1,15 @@
 {
     "category": 
     [
-        "deep-learning", 
+        "deep-learning",
         "robotic"
     ],
     "language":[
         "python2",
         "python3", 
         "cpp",
-        "c#"
+        "c#",
+        "java"
     ],
     "status":[
         "status:developpement", 
