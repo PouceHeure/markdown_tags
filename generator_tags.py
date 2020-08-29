@@ -5,7 +5,7 @@ from PIL import Image,ImageDraw,ImageFont, ImageOps
 
 GITHUB_USER = "PouceHeure"
 GITHUB_REPO = "markdown_tags"
-GITHUB_BRANCH = "master"
+GITHUB_BRANCH_OR_TAG = "v1.0"
 
 ## DON'T CHANGE THESE SETTINGS 
 
@@ -26,20 +26,39 @@ CONFLICT_CHARS = {
     ".":"_"
 }
 
+COLORS = {
+    "white": {
+        "bg": "#FFFFFF",
+        "font": "#000000"
+    }, 
+    "red": {
+        "bg": "#d50000",
+        "font": "#FFFFFF"
+    },
+    "green": {
+        "bg": "#00c853",
+        "font": "#FFFFFF"
+    } ,
+    "blue": {
+        "bg": "#2979ff",
+        "font": "#FFFFFF",
+    }  
+}
+
 def load_config_tags(path_file=PATH_FILE_CONFIG_TAGS):
     data = None
     with open(path_file) as f:
         data = json.load(f)
     return data 
 
-def generate_image(content,font, color=(255,255,255),padding=PADDING_SIZE):
+def generate_image(content,font, font_color=(0,0,0), bg_color=(255,255,255),padding=PADDING_SIZE):
     size_img = list(font.getsize(content))
     size_img[0] += 2*padding
     size_img[1] = int(FONT_SIZE*1.10) + 2*padding
-    img = Image.new('RGB', size_img, color = color)
+    img = Image.new('RGB', size_img, color = bg_color)
     img = ImageOps.expand(img,border=BORDER_SIZE,fill='black')
     d = ImageDraw.Draw(img)
-    d.text((padding,padding), content,fill = (0,0,0),font=font)
+    d.text((padding,padding), content,fill = font_color,font=font)
     return img 
 
 def fix_conflict_name(content,conflict_dict=CONFLICT_CHARS): 
@@ -52,7 +71,7 @@ def create_path_base_link(user,repo,branch):
 
 
 if __name__ == "__main__":
-    path_url_base = create_path_base_link(GITHUB_USER,GITHUB_REPO,GITHUB_BRANCH)
+    path_url_base = create_path_base_link(GITHUB_USER,GITHUB_REPO,GITHUB_BRANCH_OR_TAG)
     font = ImageFont.truetype(PATH_FILE_FONT,FONT_SIZE)
 
     md_file = MardownFile()
@@ -65,23 +84,31 @@ if __name__ == "__main__":
             os.makedirs(path_cat)
         md_file.add_section(cat) 
         for tag in cat_tags: 
-            # generate img 
-            img = generate_image(tag,font=font)
-            file_name = f"{fix_conflict_name(tag)}.png"
-            file_path = os.path.join(path_cat,file_name)
-            img.save(file_path)
-
-            # generate doc information 
-            # extract relative path 
-            file_path_rel = os.path.relpath(file_path,PATH_DIR_CURRENT) 
-            # add relative path to url 
-            file_url = os.path.join(path_url_base,file_path_rel) 
-            # write tag information inside markdown 
+            tag_name_no_conflit = fix_conflict_name(tag)
+            file_path_tag = os.path.join(path_cat,tag_name_no_conflit)
+            if not os.path.exists(file_path_tag):
+                os.makedirs(file_path_tag)
             md_file.add_subsection(tag)
-            desc = f"tag:{cat}:{tag}"
-            tag_img_md_format = md_file.add_image(desc,file_url)
-            md_file.add_new_line()
-            md_file.add_element_quote(tag_img_md_format)
+            for color in COLORS.keys():
+                font_color = COLORS[color]["font"]    
+                bg_color = COLORS[color]["bg"]
+
+                # generate img 
+                img = generate_image(tag,font=font,font_color=font_color,bg_color=bg_color)
+                file_name = f"{tag_name_no_conflit}_{color}.png"
+                file_path = os.path.join(file_path_tag,file_name)
+                img.save(file_path)
+
+                # generate doc information 
+                # extract relative path 
+                file_path_rel = os.path.relpath(file_path,PATH_DIR_CURRENT) 
+                # add relative path to url 
+                file_url = os.path.join(path_url_base,file_path_rel) 
+                # write tag information inside markdown 
+                desc = f"tag:{cat}:{tag}"
+                tag_img_md_format = md_file.add_image(desc,file_url)
+                md_file.add_element_quote(tag_img_md_format)
+                md_file.add_new_line()
 
     md_file.write(os.path.join(PATH_DIR_CURRENT,"readme.md"))
 
