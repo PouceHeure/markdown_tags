@@ -1,1 +1,0 @@
-![tags:cat:robotic](../tags/cat/robotic.png)
