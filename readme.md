@@ -30,10 +30,10 @@
 
 ```![java](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/language/java.png)```
 ## status
-### status:developpement
-![status:developpement](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/status/status_developpement.png)
+### status:development
+![status:development](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/status/status_development.png)
 
-```![status:developpement](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/status/status_developpement.png)```
+```![status:development](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/status/status_development.png)```
 ### status:production
 ![status:production](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/status/status_production.png)
 
