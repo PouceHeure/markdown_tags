@@ -1,5 +1,9 @@
 # markdown_tags
 ## category
+### machine-learning
+![tag:category:machine-learning](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/category/machine-learning.png)
+
+```![tag:category:machine-learning](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/category/machine-learning.png)```
 ### deep-learning
 ![tag:category:deep-learning](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/category/deep-learning.png)
 
