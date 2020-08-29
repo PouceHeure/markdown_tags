@@ -1,10 +1,15 @@
 import json
 import os 
+from lib.md import MardownFile
 from PIL import Image,ImageDraw,ImageFont, ImageOps
 
 FONT_SIZE = 15
 PADDING_SIZE = 10
 BORDER_SIZE = 2
+
+GITHUB_USER = "PouceHeure"
+GITHUB_REPO = "markdown_tags"
+GITHUB_BRANCH = "master"
 
 PATH_DIR_CURRENT = os.path.dirname(os.path.realpath(__file__))
 PATH_DIR_TAGS = os.path.join(PATH_DIR_CURRENT,"tags/")
@@ -18,7 +23,6 @@ CONFLICT_CHARS = {
     ":":"_",
     ".":"_"
 }
-
 
 def load_config_tags(path_file=PATH_FILE_CONFIG_TAGS):
     data = None
@@ -41,7 +45,16 @@ def fix_conflict_name(content,conflict_dict=CONFLICT_CHARS):
         content = content.replace(c_conflict,c_resolve)
     return content
 
+def create_path_base_link(user,repo,branch): 
+    return f"https://raw.githubusercontent.com/{user}/{repo}/{branch}/"
+
+
 if __name__ == "__main__":
+    md_file = MardownFile()
+    md_file.add_title("markdown_tags")
+
+    path_url_base = create_path_base_link(GITHUB_USER,GITHUB_REPO,GITHUB_BRANCH)
+
     font = ImageFont.truetype(PATH_FILE_FONT,FONT_SIZE)
 
     config_tags = load_config_tags()
@@ -49,8 +62,21 @@ if __name__ == "__main__":
         path_cat = os.path.join(PATH_DIR_TAGS,cat)
         if not os.path.exists(path_cat):
             os.makedirs(path_cat)
+        md_file.add_section(cat) 
         for tag in cat_tags: 
             img = generate_image(tag,font=font)
             file_name = f"{fix_conflict_name(tag)}.png"
-            img.save(os.path.join(path_cat,file_name))
+            file_path = os.path.join(path_cat,file_name)
+            img.save(file_path)
+
+            file_path_rel = os.path.relpath(file_path,PATH_DIR_CURRENT)
+            file_url = os.path.join(path_url_base,file_path_rel)
+            md_file.add_subsection(tag)
+            img_md = md_file.add_image(tag,file_url)
+            md_file.add_element("")
+            md_file.add_element_quote(img_md)
+
+    md_file.write(os.path.join(PATH_DIR_CURRENT,"readme.md"))
+
+
 
