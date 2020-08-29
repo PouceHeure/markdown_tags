@@ -1,11 +1,14 @@
+#! /usr/bin/python3
+
 import json
+import argparse
 import os 
 from lib.md import MardownFile
 from PIL import Image,ImageDraw,ImageFont, ImageOps
 
 GITHUB_USER = "PouceHeure"
 GITHUB_REPO = "markdown_tags"
-GITHUB_BRANCH_OR_TAG = "v1.0"
+GITHUB_BRANCH_OR_TAG = "master"
 
 ## DON'T CHANGE THESE SETTINGS 
 
@@ -71,11 +74,19 @@ def create_path_base_link(user,repo,branch):
 
 
 if __name__ == "__main__":
-    path_url_base = create_path_base_link(GITHUB_USER,GITHUB_REPO,GITHUB_BRANCH_OR_TAG)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-v", "--version", type=str, default=GITHUB_BRANCH_OR_TAG, help="github tag version")
+    args = parser.parse_args()
+    github_branch = args.version
+
+    path_url_base = create_path_base_link(GITHUB_USER,GITHUB_REPO,github_branch)
     font = ImageFont.truetype(PATH_FILE_FONT,FONT_SIZE)
 
     md_file = MardownFile()
     md_file.add_title("markdown_tags")
+    md_file.add_element(f"version: {github_branch}")
+
+    headers = ["img","url"]
 
     config_tags = load_config_tags()
     for cat, cat_tags in config_tags.items():
@@ -89,6 +100,7 @@ if __name__ == "__main__":
             if not os.path.exists(file_path_tag):
                 os.makedirs(file_path_tag)
             md_file.add_subsection(tag)
+            md_file.add_array_header(headers)
             for color in COLORS.keys():
                 font_color = COLORS[color]["font"]    
                 bg_color = COLORS[color]["bg"]
@@ -106,9 +118,11 @@ if __name__ == "__main__":
                 file_url = os.path.join(path_url_base,file_path_rel) 
                 # write tag information inside markdown 
                 desc = f"tag:{cat}:{tag}"
-                tag_img_md_format = md_file.add_image(desc,file_url)
-                md_file.add_element_quote(tag_img_md_format)
-                md_file.add_new_line()
+                
+                url_image = md_file.format_img(desc,file_path_rel)
+                url_quote_img = md_file.format_quote(md_file.format_img(desc,file_url))
+                md_file.add_array_row(url_image,url_quote_img)
+                #md_file.add_new_line()
 
     md_file.write(os.path.join(PATH_DIR_CURRENT,"readme.md"))
 
