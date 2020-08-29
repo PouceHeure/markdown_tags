@@ -29,7 +29,7 @@ def load_config_tags(path_file=PATH_FILE_CONFIG_TAGS):
 def generate_image(content,font, color=(255,255,255),padding=PADDING_SIZE):
     size_img = list(font.getsize(content))
     size_img[0] += 2*padding
-    size_img[1] += 2*padding
+    size_img[1] = int(FONT_SIZE*1.10) + 2*padding
     img = Image.new('RGB', size_img, color = color)
     img = ImageOps.expand(img,border=BORDER_SIZE,fill='black')
     d = ImageDraw.Draw(img)
