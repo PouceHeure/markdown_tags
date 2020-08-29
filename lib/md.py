@@ -22,6 +22,9 @@ class MardownFile:
     def add_element_quote(self,element):
         return self.__add_content(f"```{element}```")
 
+    def add_new_line(self):
+        return self.__add_content("")
+
     def add_image(self,desc,url):
         return self.__add_content(f"![{desc}]({url})")
 

@@ -78,8 +78,9 @@ if __name__ == "__main__":
             file_url = os.path.join(path_url_base,file_path_rel) 
             # write tag information inside markdown 
             md_file.add_subsection(tag)
-            tag_img_md_format = md_file.add_image(tag,file_url)
-            md_file.add_element("")
+            desc = f"tag:{cat}:{tag}"
+            tag_img_md_format = md_file.add_image(desc,file_url)
+            md_file.add_new_line()
             md_file.add_element_quote(tag_img_md_format)
 
     md_file.write(os.path.join(PATH_DIR_CURRENT,"readme.md"))
