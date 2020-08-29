@@ -1,6 +1,7 @@
 {
     "category": 
     [
+        "machine-learning",
         "deep-learning",
         "robotic"
     ],
@@ -17,6 +18,11 @@
     ],
     "lib":[
         "ROS", 
-        "tensorflow"
+        "tensorflow",
+        "pygame"
+    ],
+    "version":[
+        "v1",
+        "v2"
     ]
 }
