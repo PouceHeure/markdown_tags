@@ -27,10 +27,6 @@
 
 ```![tag:category:deep-learning](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/category/deep-learning.png)```
 ## language
-### c#
-![tag:language:c#](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/language/c#.png)
-
-```![tag:language:c#](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/language/c#.png)```
 ### python3
 ![tag:language:python3](https://raw.githubusercontent.com/PouceHeure/markdown_tags/master/tags/language/python3.png)
 

@@ -7,8 +7,7 @@
     "language":[
         "python2",
         "python3", 
-        "cpp",
-        "c#"
+        "cpp"
     ],
     "status":[
         "status: developpement", 
