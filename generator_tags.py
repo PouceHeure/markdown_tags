@@ -85,6 +85,8 @@ if __name__ == "__main__":
     md_file = MardownFile()
     md_file.add_title("markdown_tags")
     md_file.add_element(f"version: {github_branch}")
+    md_file.add_new_line()
+    md_file.add_element(f"add tag: pull-request **tags.json**")
 
     headers = ["img","markdown command"]
 
@@ -118,11 +120,10 @@ if __name__ == "__main__":
                 file_url = os.path.join(path_url_base,file_path_rel) 
                 # write tag information inside markdown 
                 desc = f"tag:{cat}:{tag}"
-                
                 url_image = md_file.format_img(desc,file_path_rel)
                 url_quote_img = md_file.format_quote(md_file.format_img(desc,file_url))
                 md_file.add_array_row(url_image,url_quote_img)
-                #md_file.add_new_line()
+               
 
     md_file.write(os.path.join(PATH_DIR_CURRENT,"readme.md"))
 

@@ -1,8 +1,8 @@
 #!/usr/bin/sh 
 
 # version information
-version_name="v1.10"
-version_desc="version 1.10"
+version_name="v1.0"
+version_desc="version 1.0"
 
 # generate tags 
 ./generator_tags.py --version ${version_name}
@@ -17,7 +17,7 @@ git add tags
 git commit -m "add new tags" 
 
 # create tag 
-git tag -a ${version_name} -m '${version_desc}' 
+git tag -a ${version_name} -m "${version_desc}"
 
 # push modification
 git push origin master --tags
