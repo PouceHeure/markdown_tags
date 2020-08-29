@@ -1,0 +1,21 @@
+{
+    "category": 
+    [
+        "deep-learning", 
+        "robotic"
+    ],
+    "language":[
+        "python2",
+        "python3", 
+        "cpp",
+        "c#"
+    ],
+    "status":[
+        "status: developpement", 
+        "status: production"
+    ],
+    "lib":[
+        "ROS", 
+        "tensorflow"
+    ]
+}

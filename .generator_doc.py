@@ -18,11 +18,15 @@ if __name__ == "__main__":
     tags_by_cat = create_json_index_markdown(PATH_DIR_TAGS,path_url_base)
     
     md_file = MardownFile()
+
+    md_file.add_title("markdown_tags")
+
     for cat, cat_dict in tags_by_cat.items(): 
         md_file.add_section(cat) 
         for img_name, tag in cat_dict.items(): 
             md_file.add_subsection(img_name)
             md_file.add_element(tag.create_markdown_link())
-            md_file.add_element(tag.path)
+            md_file.add_element("")
+            md_file.add_element_quote(tag.create_markdown_link())
     
     md_file.write("readme.md")
