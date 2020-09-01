@@ -72,7 +72,6 @@ def fix_conflict_name(content,conflict_dict=CONFLICT_CHARS):
 def create_path_base_link(user,repo,branch): 
     return f"https://raw.githubusercontent.com/{user}/{repo}/{branch}/"
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--version", type=str, default=GITHUB_BRANCH_OR_TAG, help="github tag version")
