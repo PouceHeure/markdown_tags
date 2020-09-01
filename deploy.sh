@@ -1,14 +1,15 @@
 #!/usr/bin/sh 
 
 # version information
-version_name="v1.0"
-version_desc="version 1.0"
+version_name="v1.10"
+version_desc="version 1.10"
 
 # generate tags 
 ./generator_tags.py --version ${version_name}
 
 # add all tags, readme and tags.json
 git rm -r --cached tags/
+git add deploy.sh
 git add readme.md  
 git add tags.json
 git add tags
