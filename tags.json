@@ -10,6 +10,7 @@
         "python3", 
         "cpp",
         "c#",
+        "c",
         "java",
         "javascript"
     ],
@@ -19,8 +20,12 @@
     ],
     "lib":[
         "ROS",
+        "scikit-learn",
+        "keras",
         "tensorflow",
-        "pygame"
+        "pygame",
+        "Qt",
+        "react"
     ],
     "version":[
         "v1",
